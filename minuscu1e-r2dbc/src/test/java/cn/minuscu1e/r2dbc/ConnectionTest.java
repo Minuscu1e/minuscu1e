@@ -4,6 +4,7 @@ import io.r2dbc.spi.ConnectionFactories;
 import io.r2dbc.spi.ConnectionFactory;
 import io.r2dbc.spi.ConnectionFactoryOptions;
 import io.r2dbc.spi.Result;
+import org.junit.Before;
 import org.junit.Test;
 import reactor.core.publisher.Mono;
 
@@ -12,9 +13,10 @@ import java.util.concurrent.TimeUnit;
 import static io.r2dbc.spi.ConnectionFactoryOptions.*;
 
 public class ConnectionTest {
+    private ConnectionFactory connectionFactory;
 
-    @Test
-    public void connectFactoryTest() throws InterruptedException {
+    @Before
+    public void init() {
         // 参数配置
         final ConnectionFactoryOptions options = builder()
                 .option(DRIVER, "mysql")
@@ -24,8 +26,11 @@ public class ConnectionTest {
                 .option(PASSWORD, "Salin520.")
                 .option(DATABASE, "minuscu1e").build();
 
-        final ConnectionFactory connectionFactory = ConnectionFactories.get(options);
+        connectionFactory = ConnectionFactories.get(options);
+    }
 
+    @Test
+    public void connectFactoryTest() throws InterruptedException {
         Mono.from(connectionFactory.create())
                 .flatMapMany(connection ->
                         connection.createStatement("insert into system_user(id, username, password) values('SU001', 'test', 'test')")
@@ -35,7 +40,20 @@ public class ConnectionTest {
                     throwable.printStackTrace();
                     return Mono.empty();
                 }).subscribe(System.out::println);
+    }
 
-        TimeUnit.SECONDS.sleep(12);
+    @Test
+    public void select() throws InterruptedException {
+        Mono.from(connectionFactory.create())
+                .flatMapMany(connection -> connection.createStatement("select * from system_user").execute())
+                .flatMap(result -> result.map((row, rowMetadata) -> row.get("username")))
+                .switchIfEmpty(Mono.just(""))
+                .onErrorResume(throwable -> {
+                    throwable.printStackTrace();
+                    return Mono.empty();
+                })
+                .subscribe(System.out::println);
+
+        TimeUnit.SECONDS.sleep(5);
     }
 }
