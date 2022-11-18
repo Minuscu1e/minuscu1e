@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.minuscu1e.file.dao.SystemFileDao">
+
+    <resultMap id="BaseResultMap" type="cn.minuscu1e.file.pojo.SystemFile">
+        <id property="id" column="id" jdbcType="CHAR"/>
+        <result property="filename" column="filename" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="ext" column="ext" jdbcType="VARCHAR"/>
+        <result property="size" column="size" jdbcType="BIGINT"/>
+        <result property="path" column="path" jdbcType="VARCHAR"/>
+        <result property="bucketName" column="bucket_name" jdbcType="VARCHAR"/>
+        <result property="isDelete" column="is_delete" jdbcType="BIT"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="createUserId" column="create_user_id" jdbcType="CHAR"/>
+        <result property="systemFilename" column="sys_filename" jdbcType="CHAR"></result>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,filename,type,
+        ext,size,path,
+        bucket_name,is_delete,create_time,
+        create_user_id
+    </sql>
+</mapper>

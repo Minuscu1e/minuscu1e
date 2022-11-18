@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://www.minuscu1e.cn:3306/minuscu1e
+    username: root
+    password: Salin520.
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        ddl-auto: none
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+logging:
+  level:
+    cn.minuscu1e.flux.dao: debug

@@ -1,0 +1,27 @@
+spring:
+  minio:
+    endpoint: http://www.minuscu1e.cn:9000
+    assessKey: root
+    secretKey: root123456@
+    bucketName: dev
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: Salin520.
+    url: jdbc:mysql://www.minuscu1e.cn:3306/minuscu1e?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    hikari:
+      max-lifetime: 1000000
+      minimum-idle: 10
+      maximum-pool-size: 100
+      idle-timeout: 10000
+
+
+  servlet:
+    multipart:
+      max-file-size: 1GB
+      max-request-size: 1GB
+logging:
+  level.cn.minuscu1e.file: debug
+mybatis-plus:
+  mapper-locations: classpath:*/mapper/*Dao.xml

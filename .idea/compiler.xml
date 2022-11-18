@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="minuscu1e-file" />
+        <module name="minuscu1e-r2dbc" />
+        <module name="minuscu1e-common" />
+        <module name="minuscu1e-webflux" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="11">
+      <module name="minuscu1e-system" target="8" />
+      <module name="minuscu1e-test" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

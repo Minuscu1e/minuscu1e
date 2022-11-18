@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: minuscu1e-file
+  profiles:
+    active: dev
