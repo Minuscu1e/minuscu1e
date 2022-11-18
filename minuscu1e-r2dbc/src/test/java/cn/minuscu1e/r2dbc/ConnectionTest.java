@@ -18,6 +18,10 @@ import static io.r2dbc.spi.ConnectionFactoryOptions.*;
 public class ConnectionTest {
     private ConnectionFactory connectionFactory;
 
+    private static Object apply(Object o) {
+        return SystemUser::getId;
+    }
+
     @Before
     public void init() {
         // 参数配置
