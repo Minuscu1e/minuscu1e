@@ -11,7 +11,7 @@ public class RedisService {
         this.redisTemplate = redisTemplate;
     }
 
-    public void set(final String key, Object value) {
+    public void set(final String key, String value) {
         redisTemplate.opsForValue().set(key, value);
     }
 
